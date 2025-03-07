@@ -1,4 +1,6 @@
-﻿namespace Civulator.Models.Behavior;
+﻿using Civulator.Models.Behavior.Desires;
+
+namespace Civulator.Models.Behavior;
 
 public class BehaviorContext
 {

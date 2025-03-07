@@ -1,35 +1,35 @@
 ﻿namespace Civulator.Models.Behavior.Desires;
 
-public abstract class Desire
+public abstract class Desire(string name, float strength, float maxStrength, float decayRate, float increaseRate)
 {
-    public string Name { get; private set; } = "";
-    public float Strength { get; set; } = 0.0f;
-    public float StartingStrength { get; private set; } = 0.0f;
-    public float MaxStrength { get; private set; } = 100.0f;
-    public float DecayRate { get; private set; } = 0.0f;
-    public float IncreaseRate { get; private set; } = 0.0f;
+    public string Name { get; private set; } = name;
+    public float Strength { get; set; } = strength;
+    public float MaxStrength { get; private set; } = maxStrength;
+    public float DecayRate { get; private set; } = decayRate;
+    public float IncreaseRate { get; private set; } = increaseRate;
 
-    public Desire(string name, float strength, float decayRate, float increaseRate)
+    public DesireState State { get; protected set; } = DesireState.None;
+
+    protected readonly List<IObserver<Desire>> _observers = [];
+
+    public abstract void Update();
+
+    public abstract void Increase(float amount);
+
+    public abstract void Decrease(float amount);
+
+    public void Attach(IObserver<Desire> observer)
     {
-        Name = name;
-        Strength = strength;
-        StartingStrength = strength;
-        DecayRate = decayRate;
-        IncreaseRate = increaseRate;
+        _observers.Add(observer);
     }
 
-    public void Update()
+    public void Detach(IObserver<Desire> observer)
     {
-        Strength = Math.Max(0.0f, Strength - DecayRate);
+        _observers.Remove(observer);
     }
 
-    public void Increase(float amount)
+    public void ClearObservers()
     {
-        if (Strength + amount > MaxStrength)
-        {
-            Strength = MaxStrength;
-            return;
-        }
-        Strength = Math.Min(StartingStrength, Strength + amount);
+        _observers.Clear();
     }
 }

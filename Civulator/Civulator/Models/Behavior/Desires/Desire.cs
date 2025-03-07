@@ -1,35 +1,76 @@
-﻿namespace Civulator.Models.Behavior.Desires;
+﻿using R3;
+using static Civulator.Models.Behavior.Desires.Desire;
 
-public abstract class Desire(string name, float strength, float maxStrength, float decayRate, float increaseRate)
+namespace Civulator.Models.Behavior.Desires;
+
+public abstract class Desire(string name, DesireConfig config)
 {
+    protected DesireConfig BaseConfig = config;
+
     public string Name { get; private set; } = name;
-    public float Strength { get; set; } = strength;
-    public float MaxStrength { get; private set; } = maxStrength;
-    public float DecayRate { get; private set; } = decayRate;
-    public float IncreaseRate { get; private set; } = increaseRate;
+    public float Strength { get; set; } = config.StartingStrength;
+    public float MaxStrength { get; private set; } = config.MaximumStrength;
+    public float DecayRate { get; private set; } = config.DecayRate;
+    public float IncreaseRate { get; private set; } = config.IncreaseRate;
 
-    public DesireState State { get; protected set; } = DesireState.None;
+    public ReactiveProperty<DesireState> State { get; protected set; } = new ReactiveProperty<DesireState>(DesireState.None);
 
-    protected readonly List<IObserver<Desire>> _observers = [];
-
-    public abstract void Update();
-
-    public abstract void Increase(float amount);
-
-    public abstract void Decrease(float amount);
-
-    public void Attach(IObserver<Desire> observer)
+    public virtual void Update()
     {
-        _observers.Add(observer);
+        if (Strength > 0 && DecayRate > 0)
+        {
+            Decrease(DecayRate);
+        }
+
+        if (Strength < MaxStrength && IncreaseRate > 0)
+        {
+            Increase(IncreaseRate);
+        }
+
+        DesireState newState = State.CurrentValue;
+
+
+        if (Strength > BaseConfig.LowLevel)
+            newState = DesireState.None;
+        else if (Strength <= BaseConfig.LowLevel && Strength > BaseConfig.MediumLevel)
+            newState = DesireState.Low;
+        else if (Strength >= BaseConfig.MediumLevel)
+            newState = DesireState.Medium;
+        else if (Strength >= BaseConfig.HighLevel)
+            newState = DesireState.High;
+        else if (Strength <= BaseConfig.CriticalLevel)
+            newState = DesireState.Critical;
+
+        if (newState != State.CurrentValue)
+            State.OnNext(newState);
     }
 
-    public void Detach(IObserver<Desire> observer)
+    public virtual void Increase(float amount)
     {
-        _observers.Remove(observer);
+        if (Strength + amount > MaxStrength)
+            Strength = MaxStrength;
+        else
+            Strength += amount;
     }
 
-    public void ClearObservers()
+    public virtual void Decrease(float amount)
     {
-        _observers.Clear();
+        if (Strength - amount < 0)
+            Strength = 0;
+        else
+            Strength -= amount;
+    }
+
+    public struct DesireConfig
+    {
+        public required float CriticalLevel;
+        public required float HighLevel;
+        public required float MediumLevel;
+        public required float LowLevel;
+
+        public float StartingStrength;
+        public float MaximumStrength;
+        public float DecayRate;
+        public float IncreaseRate;
     }
 }

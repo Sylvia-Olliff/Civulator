@@ -1,18 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178
+VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Civulator", "Civulator\Civulator.csproj", "{AE1B49E6-38C8-477F-ADB3-671CEFBDBA8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Civulator.UI", "Civulator.UI\Civulator.UI.csproj", "{C5C63F74-FFAF-B5A7-A6AE-73CB0FD55F8A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Civulator.UI", "Civulator.UI\Civulator.UI.csproj", "{227E8B66-3985-477B-B774-590AC561322B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Civulator.UI.Desktop", "Civulator.UI.Desktop\Civulator.UI.Desktop.csproj", "{64B792E3-D254-0DE2-76FE-7FF75EC9169F}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Civulator.UI.Desktop", "Civulator.UI.Desktop\Civulator.UI.Desktop.csproj", "{0D4506D6-4BCC-411B-B37D-7E7AAE02F960}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,19 +19,16 @@ Global
 		{AE1B49E6-38C8-477F-ADB3-671CEFBDBA8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE1B49E6-38C8-477F-ADB3-671CEFBDBA8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE1B49E6-38C8-477F-ADB3-671CEFBDBA8D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5C63F74-FFAF-B5A7-A6AE-73CB0FD55F8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5C63F74-FFAF-B5A7-A6AE-73CB0FD55F8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5C63F74-FFAF-B5A7-A6AE-73CB0FD55F8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5C63F74-FFAF-B5A7-A6AE-73CB0FD55F8A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{64B792E3-D254-0DE2-76FE-7FF75EC9169F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64B792E3-D254-0DE2-76FE-7FF75EC9169F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64B792E3-D254-0DE2-76FE-7FF75EC9169F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64B792E3-D254-0DE2-76FE-7FF75EC9169F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{227E8B66-3985-477B-B774-590AC561322B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{227E8B66-3985-477B-B774-590AC561322B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{227E8B66-3985-477B-B774-590AC561322B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{227E8B66-3985-477B-B774-590AC561322B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D4506D6-4BCC-411B-B37D-7E7AAE02F960}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D4506D6-4BCC-411B-B37D-7E7AAE02F960}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D4506D6-4BCC-411B-B37D-7E7AAE02F960}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D4506D6-4BCC-411B-B37D-7E7AAE02F960}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E443A7B6-2EEE-4323-B153-6DFC37A73320}
 	EndGlobalSection
 EndGlobal

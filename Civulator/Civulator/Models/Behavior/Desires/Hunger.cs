@@ -2,8 +2,6 @@
 
 public class Hunger(Hunger.HungerConfig config) : Desire("Hunger", config.baseConfig)
 {
-    private HungerConfig _config = config;
-
     public struct HungerConfig
     {
         public DesireConfig baseConfig;

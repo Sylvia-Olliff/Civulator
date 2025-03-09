@@ -18,7 +18,6 @@ public class ConditionBehavior : Behavior
 
     public override BehaviorState Evaluate(BehaviorContext context)
     {
-        CurrentState = BehaviorState.Running;
         if (Condition(context))
         {
             if (Children.Count == 0)

@@ -9,14 +9,12 @@ public interface IPop
     public string Name { get; }
     public int AgeDays { get; }
 
+    public Behavior.Behavior SimpleBehaviorRoot { get; }
+    public Behavior.Behavior ComplexBehaviorRoot { get; }
     public IAction CurrentAction { get; }
-    public int CurrentActionProgress { get; }
+    public List<ICondition> CurrentConditions { get; }
 
-    public ICondition CurrentCondition { get; }
-    public int CurrentConditionProgress { get; }
-
-    public IEnumerable<IAction> GetPossibleActions();
-
+    
     public void Act();
 
     public void MakeDecision();

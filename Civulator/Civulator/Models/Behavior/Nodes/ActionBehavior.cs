@@ -13,7 +13,6 @@ public class ActionBehavior : Behavior
     }
     public override BehaviorState Evaluate(BehaviorContext context)
     {
-        CurrentState = BehaviorState.Running;
         CurrentState = Action(context);
         return CurrentState;
     }

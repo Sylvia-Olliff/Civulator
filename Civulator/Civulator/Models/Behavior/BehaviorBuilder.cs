@@ -1,4 +1,5 @@
-﻿using Civulator.Models.Behavior.Nodes;
+﻿using Civulator.Models.Behavior.Desires;
+using Civulator.Models.Behavior.Nodes;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
@@ -20,12 +21,12 @@ public class BehaviorBuilder
     private void AddHungerBehavior()
     {
         var hungerBehavior = new SelectorBehavior();
-        hungerBehavior.Children.Add(new ConditionBehavior((context) => (int)context["hunger"] < 50));
-        hungerBehavior.Children.Add(new ActionBehavior((context) =>
-        {
-            context["hunger"] = 100;
-            return BehaviorState.Success;
-        }));
+        hungerBehavior.Children.Add(new ConditionBehavior((context) => context.Desires.Single(d => d.Name == "Hunger").State.CurrentValue is DesireState.None) 
+        { 
+            Children = []
+        });
+        
+        
         Root?.Children.Add(hungerBehavior);
     }
 }

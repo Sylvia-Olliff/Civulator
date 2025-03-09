@@ -1,18 +1,20 @@
-﻿namespace Civulator.Models.Behavior.Desires;
+﻿using static Civulator.Models.Behavior.Desires.Safety;
 
-public class Rest(Rest.RestConfig config) : Desire("Rest", config.baseConfig)
+namespace Civulator.Models.Behavior.Desires;
+
+public class Safety(SafetyConfig config) : Desire("Safety", config.baseConfig)
 {
-    public struct RestConfig
+    public struct SafetyConfig
     {
         public DesireConfig baseConfig;
 
-        public RestConfig()
+        public SafetyConfig()
         {
             baseConfig = new DesireConfig
             {
-                StartingStrength = 50.0f,
+                StartingStrength = 10.0f,
                 MaximumStrength = 200.0f,
-                DecayRate = 1f,
+                DecayRate = 0.0f,
                 IncreaseRate = 0.0f,
 
                 CriticalLevel = 25,

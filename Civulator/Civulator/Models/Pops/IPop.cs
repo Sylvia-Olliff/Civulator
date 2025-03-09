@@ -9,6 +9,8 @@ public interface IPop
     public string Name { get; }
     public int AgeDays { get; }
 
+    public PhysicalStats PhysicalStats { get; }
+
     public Behavior.Behavior SimpleBehaviorRoot { get; }
     public Behavior.Behavior ComplexBehaviorRoot { get; }
     public IAction CurrentAction { get; }
@@ -19,5 +21,4 @@ public interface IPop
 
     public void MakeDecision();
 
-    public void ChangeValue(ChangeLabel changeLabel, float value);
 }

@@ -5,7 +5,16 @@ namespace Civulator.Models.Behavior;
 
 public class BehaviorContext
 {
-    public List<Desire> Desires { get; set; } = [];
+    private Dictionary<string, Desire> Desires { get; set; } = new Dictionary<string, Desire>();
 
-    public ref IPop PopRef { get; }
+    private IPop? _pop;
+    public ref IPop? PopRef
+    {
+        get { return ref _pop; }
+    }
+
+    public BehaviorContext(IPop pop)
+    {
+        _pop = pop;
+    }
 }

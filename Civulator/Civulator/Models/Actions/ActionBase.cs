@@ -3,16 +3,35 @@ using Civulator.Models.Conditions;
 
 namespace Civulator.Models.Actions;
 
-public abstract class ActionBase(string name, int duration, List<ICondition> possibleConditions, List<ICondition> requiredConditions, List<ICondition> blockedConditions) : IAction
+public abstract class ActionBase(string name, int duration) : IAction
 {
     public string Name { get; set; } = name;
     public int Duration { get; set; } = duration;
-    public List<ICondition> PossibleConditions { get; set; } = possibleConditions;
-    public List<ICondition> RequiredConditions { get; set; } = requiredConditions;
-    public List<ICondition> BlockedConditions { get; set; } = blockedConditions;
 
-    protected abstract Func<BehaviorContext,List<ICondition>, List<ICondition>> DetermineConditions { get; set; }
+    protected abstract Func<BehaviorContext, KeyValuePair<BehaviorState, BehaviorContext>> DetermineConditions { get; set; }
 
-    public abstract Task Execute(BehaviorContext context);
+    public virtual Task<BehaviorState> Execute(ref BehaviorContext context)
+    {
+        var result = DetermineConditions(context);
+        var resultState = result.Key;
+        context = result.Value;
+        
+        switch (resultState)
+        {
+            case BehaviorState.Success:
+                // TODO: Apply changes to the context
+                break;
+            case BehaviorState.Idle:
+                // Changes blocked
+                break;
+            case BehaviorState.Failure:
+                // Check condition failed
+                break;
+            default:
+                throw new Exception($"Received invalid BehaviorState: {Name}");
+        }
+
+        return Task.FromResult(resultState);
+    }
 
 }

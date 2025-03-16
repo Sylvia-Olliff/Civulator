@@ -34,9 +34,9 @@ public abstract class Desire(string name, DesireConfig config)
             newState = DesireState.None;
         else if (Strength <= BaseConfig.LowLevel && Strength > BaseConfig.MediumLevel)
             newState = DesireState.Low;
-        else if (Strength >= BaseConfig.MediumLevel)
+        else if (Strength <= BaseConfig.MediumLevel && Strength > BaseConfig.HighLevel)
             newState = DesireState.Medium;
-        else if (Strength >= BaseConfig.HighLevel)
+        else if (Strength <= BaseConfig.HighLevel && Strength > BaseConfig.CriticalLevel)
             newState = DesireState.High;
         else if (Strength <= BaseConfig.CriticalLevel)
             newState = DesireState.Critical;

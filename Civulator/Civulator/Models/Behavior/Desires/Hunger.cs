@@ -21,10 +21,5 @@ public class Hunger(Hunger.HungerConfig config) : Desire("Hunger", config.baseCo
                 LowLevel = 100
             };
         }
-
-        public HungerConfig(DesireConfig config)
-        {
-            baseConfig = config;
-        }
     }
 }

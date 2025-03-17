@@ -28,4 +28,9 @@ public struct GridCoord
         X++;
         return this;
     }
+
+    public float Distance(GridCoord coord)
+    {
+        return MathF.Sqrt(MathF.Pow(X - coord.X, 2) + MathF.Pow(Y - coord.Y, 2));
+    }
 }

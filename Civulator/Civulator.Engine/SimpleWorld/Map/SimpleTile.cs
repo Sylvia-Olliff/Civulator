@@ -1,4 +1,5 @@
 ﻿using Civulator.Engine.SimpleWorld.Environment;
+using Civulator.Engine.SimpleWorld.Environment.Resources;
 using Civulator.Models.Conditions;
 
 namespace Civulator.Engine.SimpleWorld.Map;

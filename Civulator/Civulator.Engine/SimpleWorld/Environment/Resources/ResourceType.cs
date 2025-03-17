@@ -1,4 +1,4 @@
-﻿namespace Civulator.Engine.SimpleWorld.Environment;
+﻿namespace Civulator.Engine.SimpleWorld.Environment.Resources;
 
 public enum ResourceType
 {

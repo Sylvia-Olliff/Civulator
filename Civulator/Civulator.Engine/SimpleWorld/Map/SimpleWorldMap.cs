@@ -72,4 +72,12 @@ public class SimpleWorldMap
         if (_mapGrid.TryGetValue(coord, out SimpleTile _))
             _mapGrid[coord] = tile;
     }
+
+    public void PrintMapToConsole()
+    {
+        foreach (var tile in _mapGrid.Values)
+        {
+            Console.WriteLine($"Tile at {tile.Coord.X}, {tile.Coord.Y} has Humidity: {tile.Humidity}, Elevation: {tile.Elevation}, Temp: {tile.Temp}");
+        }
+    }
 }

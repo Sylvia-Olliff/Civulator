@@ -1,6 +1,6 @@
 ﻿using Civulator.Models.Utility;
 
-namespace Civulator.Engine.SimpleWorld.Environment;
+namespace Civulator.Engine.SimpleWorld.Environment.Resources;
 
 public class Resource : Enumeration
 {
@@ -13,6 +13,7 @@ public class Resource : Enumeration
     public static readonly Resource TinOreTemplate          = new("TinOre", 0, 1.0f, "A kilogram of Tin Ore", ResourceType.Ore, 2.0f);
     public static readonly Resource CopperOreTemplate       = new("CopperOre", 0, 1.0f, "A kilogram of Copper Ore", ResourceType.Ore, 2.2f);
     public static readonly Resource IronOreTemplate         = new("IronOre", 0, 1.0f, "A kilogram of Iron Ore", ResourceType.Ore, 3.0f);
+    public static readonly Resource ZincOreTemplate         = new("ZincOre", 0, 1.0f, "A kilogram of Zinc Ore", ResourceType.Ore, 2.0f);
 
     // Food
     public static readonly Resource BerriesTemplate         = new("Berries", 0, 0.1f, "A handful of berries", ResourceType.Food);
@@ -40,7 +41,7 @@ public class Resource : Enumeration
 
     public Resource Copy()
     {
-        return new Resource(this.Name, this.Amount, this.Weight, this.Description, this.Type, this.Durability);
+        return new Resource(Name, Amount, Weight, Description, Type, Durability);
     }
 }
 
